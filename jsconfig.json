@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "models/*": ["./db/models/*"],
+      "config/*": ["./config/*"]
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "listings",
+  "description": "Listing Serverless Stack API",
+  "version": "0.1.0",
+  "author": "Lucas Nascimento",
+  "license": "ISC",
+  "scripts": {
+    "dev": "./node_modules/.bin/serverless offline -s dev -P 6013"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "mysql2": "^1.7.0",
+    "sequelize": "^5.18.1"
+  },
+  "devDependencies": {
+    "serverless": "^1.51.0",
+    "serverless-dotenv-plugin": "^2.1.1",
+    "serverless-offline": "^5.10.1",
+    "serverless-prune-plugin": "^1.4.1"
+  }
+}

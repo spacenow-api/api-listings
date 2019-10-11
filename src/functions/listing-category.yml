@@ -1,0 +1,30 @@
+get-listing-categories:
+  handler: src/functions/listing-category/get-listing-categories.main
+  events:
+    - http:
+        path: listing-categories/{id}
+        method: get
+get-listing-category:
+  handler: src/functions/listing-category/get-listing-category.main
+  events:
+    - http:
+        path: listing-category/{id}
+        method: get
+put-listing-category:
+  handler: src/functions/listing-category/put-listing-category.main
+  events:
+    - http:
+        path: listing-category/{id}
+        method: put
+post-listing-category:
+  handler: src/functions/listing-category/post-listing-category.main
+  events:
+    - http:
+        path: listing-category
+        method: post
+delete-listing-category:
+  handler: src/functions/listing-category/delete-listing-category.main
+  events:
+    - http:
+        path: listing-category/{id}
+        method: delete

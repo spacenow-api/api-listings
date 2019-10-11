@@ -1,0 +1,31 @@
+service: australia-loop-listings
+
+dotenv:
+  path: ./.env
+  basePath: ./
+  include:
+    - POOL_ID
+    - ACCOUNT_ID
+
+custom:
+  poolId: ${env:POOL_ID}
+  accountId: ${env:ACCOUNT_ID}
+  prune:
+    automatic: true
+    number: 3
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+
+functions:
+  - ${file(src/functions/listing-category.yml)}
+  - ${file(src/functions/listing-attribute-value.yml)}
+
+plugins:
+  - serverless-offline
+  - serverless-prune-plugin
+  - serverless-dotenv-plugin
+
+resources:
+  - ${file(resources/api-gateway-errors.yml)}
