@@ -1,4 +1,4 @@
-service: australia-loop-listings
+service: spacenow-listings
 
 dotenv:
   path: ./.env
@@ -19,8 +19,9 @@ provider:
   runtime: nodejs10.x
 
 functions:
+  - ${file(src/functions/listing.yml)}
   - ${file(src/functions/listing-category.yml)}
-  - ${file(src/functions/listing-attribute-value.yml)}
+  - ${file(src/functions/listing-attribute.yml)}
 
 plugins:
   - serverless-offline

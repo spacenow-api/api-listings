@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: DataTypes.UUIDV4,
       field: 'attribute_id',
       references: {
-        model: 'EAVAttribute',
+        model: 'Attribute',
         key: 'id'
       }
     },
@@ -45,11 +45,11 @@ module.exports = (sequelize, DataTypes) => {
       field: 'updated_at'
     }
   }, {
-    tableName: 'category_entity_datetime',
+    tableName: 'listing_attribute_datetime',
     indexes: [
       {
         unique: true,
-        fields: ['entity_id']
+        fields: ['listing_id']
       },
       {
         unique: true,
@@ -59,7 +59,7 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   ListingAttributeDatetime.associate = (models) => {
-    ListingAttributeDatetime.belongsTo(models.CategoryEntity, {
+    ListingAttributeDatetime.belongsTo(models.Listing, {
       foreignKey: 'id'
     });
   };

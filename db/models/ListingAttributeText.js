@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: DataTypes.UUIDV4,
       field: 'attribute_id',
       references: {
-        model: 'EAVAttribute',
+        model: 'Attribute',
         key: 'id'
       }
     },

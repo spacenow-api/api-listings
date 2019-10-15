@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: DataTypes.UUIDV4,
       field: 'attribute_id',
       references: {
-        model: 'EAVAttribute',
+        model: 'Attribute',
         key: 'id'
       }
     },
@@ -45,7 +45,7 @@ module.exports = (sequelize, DataTypes) => {
       field: 'updated_at'
     }
   }, {
-    tableName: 'category_entity_varchar',
+    tableName: 'listing_attribute_varchar',
     indexes: [
       {
         unique: true,

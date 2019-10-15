@@ -1,0 +1,42 @@
+get-listings:
+  handler: src/functions/listing/get-listings.main
+  events:
+    - http:
+        path: listings
+        method: get
+get-listing:
+  handler: src/functions/listing/get-listing.main
+  events:
+    - http:
+        path: listing/{id}
+        method: get
+put-listing:
+  handler: src/functions/listing/put-listing.main
+  events:
+    - http:
+        path: listing/{id}
+        method: put
+post-listing:
+  handler: src/functions/listing/post-listing.main
+  events:
+    - http:
+        path: listing
+        method: post
+delete-listing:
+  handler: src/functions/listing/delete-listing.main
+  events:
+    - http:
+        path: listing/{id}
+        method: delete
+publish-listing:
+  handler: src/functions/listing/publish-listing.main
+  events:
+    - http:
+        path: listing/{id}/publish
+        method: put
+user-listings:
+  handler: src/functions/listing/user-listings.main
+  events:
+    - http:
+        path: listings/{userId}/user
+        method: get

@@ -1,0 +1,30 @@
+get-listing-attributes:
+  handler: src/functions/listing-attribute/get-listing-attributes.main
+  events:
+    - http:
+        path: listing-attributes/{id}
+        method: get
+get-listing-attribute:
+  handler: src/functions/listing-attribute/get-listing-attribute.main
+  events:
+    - http:
+        path: listing-attribute/{type}/{id}
+        method: get
+put-listing-attribute:
+  handler: src/functions/listing-attribute/put-listing-attribute.main
+  events:
+    - http:
+        path: listing-attribute/{type}/{id}
+        method: put
+post-listing-attribute:
+  handler: src/functions/listing-attribute/post-listing-attribute.main
+  events:
+    - http:
+        path: listing-attribute/{type}
+        method: post
+delete-listing-attribute:
+  handler: src/functions/listing-attribute/delete-listing-attribute.main
+  events:
+    - http:
+        path: listing-attribute/{type}/{id}
+        method: delete

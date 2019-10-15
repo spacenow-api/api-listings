@@ -1,11 +1,11 @@
-const listingAttributeValueService = require('../../services/listing-attribute-value.service')
+const listingAttributeService = require('../../services/listing-attribute.service')
 const r = require('../../helpers/response.utils')
 
 module.exports.main = (event, context, callback) => {
-  const { id } = event.pathParameters
+  const { id, type } = event.pathParameters
   context.callbackWaitsForEmptyEventLoop = false
-  listingAttributeValueService
-    .getListingAttributeValue(id)
+  listingAttributeService
+    .getListingAttribute(id, type)
     .then((data) => callback(null, r.success(data)))
     .catch((err) => callback(null, r.failure(err)))
 }

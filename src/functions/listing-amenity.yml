@@ -1,0 +1,30 @@
+get-listing-amenities:
+  handler: src/functions/listing-amenity/get-listing-amenities.main
+  events:
+    - http:
+        path: listing-amenities/{listingId}
+        method: get
+get-listing-amenity:
+  handler: src/functions/listing-amenity/get-listing-amenity.main
+  events:
+    - http:
+        path: listing-amenity/{id}
+        method: get
+put-listing-amenity:
+  handler: src/functions/listing-amenity/put-listing-amenity.main
+  events:
+    - http:
+        path: listing-amenity/{id}
+        method: put
+post-listing-amenity:
+  handler: src/functions/listing-amenity/post-listing-amenity.main
+  events:
+    - http:
+        path: listing-amenity
+        method: post
+delete-listing-amenity:
+  handler: src/functions/listing-amenity/delete-listing-amenity.main
+  events:
+    - http:
+        path: listing-amenity/{id}
+        method: delete
