@@ -9,7 +9,8 @@ module.exports = {
       },
       code: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        unique: true
       },
       location_id: {
         type: Sequelize.INTEGER,
@@ -60,6 +61,11 @@ module.exports = {
         type: Sequelize.BOOLEAN,
         allowNull: false,
         defaultValue: 0
+      },
+      status: {
+        type: Sequelize.ENUM('active', 'deleted', 'claimed'),
+        allowNull: false,
+        defaultValue: 'active'
       },
       created_at: {
         allowNull: false,

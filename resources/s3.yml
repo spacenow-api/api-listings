@@ -1,0 +1,18 @@
+Resources:
+  S3BucketPhotos:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: sandpit-spacenow-images
+      # add additional custom bucket configuration here
+  ResizeLambdaPermissionPhotosS3:
+    Type: 'AWS::Lambda::Permission'
+    Properties:
+      FunctionName:
+        'Fn::GetAtt':
+          - ResizeLambdaFunction
+          - Arn
+      Principal: 's3.amazonaws.com'
+      Action: 'lambda:InvokeFunction'
+      SourceAccount:
+        Ref: AWS::AccountId
+      SourceArn: 'arn:aws:s3:::sandpit-spacenow-images'

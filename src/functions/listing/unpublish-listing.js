@@ -6,7 +6,7 @@ module.exports.main = (event, context, callback) => {
   const { id } = event.pathParameters
   context.callbackWaitsForEmptyEventLoop = false
   listingService
-    .putListing(id, JSON.parse(event.body), user)
+    .unpublishListing(id, user)
     .then((data) => callback(null, r.success(data)))
     .catch((err) => callback(null, r.failure(err)))
 }

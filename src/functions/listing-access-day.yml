@@ -1,0 +1,36 @@
+get-listing-access-days:
+  handler: src/functions/listing-access-day/get-listing-access-days.main
+  events:
+    - http:
+        path: listing-access-days
+        method: get
+get-listing-access-day:
+  handler: src/functions/listing-access-day/get-listing-access-day.main
+  events:
+    - http:
+        path: listing-access-day/{id}
+        method: get
+put-listing-access-day:
+  handler: src/functions/listing-access-day/put-listing-access-day.main
+  events:
+    - http:
+        path: listing-access-day/{id}
+        method: put
+        authorizer:
+          name: authorize
+post-listing-access-day:
+  handler: src/functions/listing-access-day/post-listing-access-day.main
+  events:
+    - http:
+        path: listing-access-day
+        method: post
+        authorizer:
+          name: authorize
+delete-listing-access-day:
+  handler: src/functions/listing-access-day/delete-listing-access-day.main
+  events:
+    - http:
+        path: listing-access-day/{id}
+        method: delete
+        authorizer:
+          name: authorize

@@ -11,7 +11,8 @@ module.exports = (sequelize, DataTypes) => {
     code: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      field: 'code'
+      field: 'code',
+      unique: true
     },
     locationId: {
       type: DataTypes.INTEGER,
@@ -78,6 +79,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.BOOLEAN,
       field: 'is_ready',
       defaultValue: 0
+    },
+    status: {
+      type: DataTypes.ENUM('active', 'deleted', 'claimed'),
+      field: 'status',
+      defaultValue: 'active'
     },
     createdAt: {
       allowNull: false,

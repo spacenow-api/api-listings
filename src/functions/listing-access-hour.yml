@@ -1,0 +1,36 @@
+get-listing-access-hours:
+  handler: src/functions/listing-access-hour/get-listing-access-hours.main
+  events:
+    - http:
+        path: listing-access-hours
+        method: get
+get-listing-access-hour:
+  handler: src/functions/listing-access-hour/get-listing-access-hour.main
+  events:
+    - http:
+        path: listing-access-hour/{id}
+        method: get
+put-listing-access-hour:
+  handler: src/functions/listing-access-hour/put-listing-access-hour.main
+  events:
+    - http:
+        path: listing-access-hour/{id}
+        method: put
+        authorizer:
+          name: authorize
+post-listing-access-hour:
+  handler: src/functions/listing-access-hour/post-listing-access-hour.main
+  events:
+    - http:
+        path: listing-access-hour
+        method: post
+        authorizer:
+          name: authorize
+delete-listing-access-hour:
+  handler: src/functions/listing-access-hour/delete-listing-access-hour.main
+  events:
+    - http:
+        path: listing-access-hour/{id}
+        method: delete
+        authorizer:
+          name: authorize

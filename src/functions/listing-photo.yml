@@ -1,0 +1,38 @@
+get-listing-photos:
+  handler: src/functions/listing-photo/get-listing-photos.main
+  events:
+    - http:
+        path: listing-photos/{id}
+        method: get
+        authorizer:
+          name: authorize
+get-listing-photo:
+  handler: src/functions/listing-photo/get-listing-photo.main
+  events:
+    - http:
+        path: listing-photo/{id}
+        method: get
+post-listing-photo:
+  handler: src/functions/listing-photo/post-listing-photo.main
+  events:
+    - http:
+        path: listing-photo
+        method: post
+delete-listing-photo:
+  handler: src/functions/listing-photo/delete-listing-photo.main
+  events:
+    - http:
+        path: listing-photo/{id}
+        method: delete
+upload-listing-photo:
+  handler: src/functions/listing-photo/upload-listing-photo.main
+  events:
+    - http:
+        path: listing-photo/{id}/upload
+        method: post
+cover-listing-photo:
+  handler: src/functions/listing-photo/cover-listing-photo.main
+  events:
+    - http:
+        path: listing-photo/{id}/cover
+        method: put

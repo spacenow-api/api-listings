@@ -32,38 +32,60 @@ const postListing = async (value) => {
   }
 }
 
-const putListing = async (id, value) => {
+const putListing = async (id, value, user) => {
   const where = { where: { id }, individualHooks: true }
   try {
     const valueToUpdate = await Listing.findOne(where);
     if (!valueToUpdate) throw new Error(`Listing ${id} not found.`);
-    await Listing.update(value, where)
+    if (user.role === 'admin' || valueToUpdate.userId === user.id)
+      await Listing.update(value, where)
+    else throw new Error(`You are not the owner.`);
     return await Listing.findOne(where)
   } catch (error) {
     throw error
   }
 }
 
-const deleteListing = async (id) => {
+const deleteListing = async (id, user) => {
   const where = { where: { id } }
+  const value = { isPublished: false,  }
   try {
     const valueToUpdate = await Listing.findOne(where);
     if (!valueToUpdate) throw new Error(`Listing ${id} not found.`);
-    await Listing.delete(where)
+    if (user.role === 'admin' || valueToUpdate.userId === user.id)
+      await Listing.update(value, where)
+    else throw new Error(`You are not the owner.`);
     return Object.assign(`Listing ${id} delete.`)
   } catch (error) {
     throw error
   }
 }
 
-const publishListing = async (id) => {
+const publishListing = async (id, user) => {
   const where = { where: { id, is_ready: true } }
   const value = { isPublished: true }
   try {
     const valueToUpdate = await Listing.findOne(where);
     if (!valueToUpdate) throw new Error(`Listing ${id} not found or not ready to be published.`);
+    if (user.role === 'admin' || valueToUpdate.userId === user.id)
+      await Listing.update(value, where)
+    else throw new Error(`You are not the owner.`);
+    return Object.assign(valueToUpdate, value)
+  } catch (error) {
+    throw error
+  }
+}
+
+const unpublishListing = async (id, user) => {
+  const where = { where: { id } }
+  const value = { isPublished: false }
+  try {
+    const valueToUpdate = await Listing.findOne(where);
+    if (!valueToUpdate) throw new Error(`Listing ${id} not found.`);
+    if (user.role === 'admin' || valueToUpdate.userId === user.id)
     await Listing.update(value, where)
-    return await Listing.findOne(where)
+    else throw new Error(`You are not the owner.`);
+    return Object.assign(valueToUpdate, value)
   } catch (error) {
     throw error
   }
@@ -80,4 +102,17 @@ const userListings = async (userId, pageIndex = 0, pageSize = 10) => {
   }
 }
 
-module.exports = { getListings, getListing, postListing, putListing, deleteListing, publishListing, userListings }
+const claimListing = async (id) => {
+  const where = { where: { id, is_ready: true } }
+  const value = { status: 'claimed' }
+  try {
+    const valueToUpdate = await Listing.findOne(where);
+    if (!valueToUpdate) throw new Error(`Listing ${id} not found or not ready to be published.`);
+    await Listing.update(value, where)
+    return Object.assign(valueToUpdate, value)
+  } catch (error) {
+    throw error
+  }
+}
+
+module.exports = { getListings, getListing, postListing, putListing, deleteListing, publishListing, unpublishListing, userListings, claimListing }

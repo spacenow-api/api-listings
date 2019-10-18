@@ -36,7 +36,7 @@ module.exports = {
         type: 'foreign key',
         name: 'fk_listing_category_listing_id',
         references: {
-          table: 'Listing',
+          table: 'listing',
           field: 'id'
         }
       }));

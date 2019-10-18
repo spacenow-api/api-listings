@@ -1,12 +1,12 @@
-const listingService = require('../../services/listing.service')
+const listingAccessHourService = require('../../services/listing-access-hour.service')
 const r = require('../../helpers/response.utils')
 
 module.exports.main = (event, context, callback) => {
-  const user = JSON.parse(event.requestContext.authorizer.user);
   const { id } = event.pathParameters
+  const { pageIndex = 0, pageSize = 10 } = event.queryStringParameters
   context.callbackWaitsForEmptyEventLoop = false
-  listingService
-    .putListing(id, JSON.parse(event.body), user)
+  listingAccessHourService
+    .getListingAccessHours(id, pageIndex, pageSize)
     .then((data) => callback(null, r.success(data)))
     .catch((err) => callback(null, r.failure(err)))
 }

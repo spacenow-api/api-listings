@@ -16,27 +16,49 @@ put-listing:
     - http:
         path: listing/{id}
         method: put
+        authorizer:
+          name: authorize
 post-listing:
   handler: src/functions/listing/post-listing.main
   events:
     - http:
         path: listing
         method: post
+        authorizer:
+          name: authorize
 delete-listing:
   handler: src/functions/listing/delete-listing.main
   events:
     - http:
         path: listing/{id}
         method: delete
+        authorizer:
+          name: authorize
 publish-listing:
   handler: src/functions/listing/publish-listing.main
   events:
     - http:
         path: listing/{id}/publish
         method: put
+        authorizer:
+          name: authorize
+unpublish-listing:
+  handler: src/functions/listing/unpublish-listing.main
+  events:
+    - http:
+        path: listing/{id}/unpublish
+        method: put
+        authorizer:
+          name: authorize
 user-listings:
   handler: src/functions/listing/user-listings.main
   events:
     - http:
         path: listings/{userId}/user
         method: get
+claim-listing:
+  handler: src/functions/listing/claim-listing.main
+  events:
+    - http:
+        path: listing/{id}/claim
+        method: put

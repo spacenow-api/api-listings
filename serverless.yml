@@ -19,9 +19,13 @@ provider:
   runtime: nodejs10.x
 
 functions:
+  - ${file(src/functions/authorize/authorize.yml)}
   - ${file(src/functions/listing.yml)}
+  - ${file(src/functions/listing-photo.yml)}
   - ${file(src/functions/listing-category.yml)}
   - ${file(src/functions/listing-attribute.yml)}
+  - ${file(src/functions/listing-access-day.yml)}
+  - ${file(src/functions/listing-access-hour.yml)}
 
 plugins:
   - serverless-offline
